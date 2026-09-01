@@ -1,0 +1,8 @@
+employee_id,name,department,employee_type,basic_salary,bonus,gross_salary,tax,deductions,net_salary
+E002,Priya Nair,Engineering,Manager,90000.00,15000.00,118500.00,23700.00,11000.00,83800.00
+E003,Rohit Verma,Design,FullTimeEmployee,60000.00,3000.00,63000.00,9450.00,7400.00,46150.00
+E004,Sneha Iyer,Marketing,Contractor,45000.00,2000.00,45000.00,4500.00,0.00,40500.00
+E005,Karan Mehta,Engineering,Intern,12000.00,0.00,12000.00,0.00,0.00,12000.00
+E006,Isha Gupta,Finance,Intern,18000.00,1000.00,19000.00,1520.00,0.00,17480.00
+E007,Dev Patel,Operations,Manager,120000.00,20000.00,158000.00,39500.00,14600.00,103900.00
+E008,Ananya Rao,HR,FullTimeEmployee,55000.00,4000.00,59000.00,7080.00,6800.00,45120.00

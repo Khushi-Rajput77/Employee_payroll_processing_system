@@ -274,14 +274,15 @@ class PayrollProcessor:
                 totals[key] += Decimal(row[key])
         return totals
 
-    def summary_by_type(self) -> Dict[str, Dict[str, Decimal]]:
-        by_type: Dict[str, Dict[str, Decimal]] = {}
+    def summary_by_type(self) -> Dict[str, Dict]:
+        by_type: Dict[str, Dict] = {}
         for row in self.process():
             t = row["employee_type"]
-            bucket = by_type.setdefault(t, {"count": 0, "gross_salary": Decimal("0"),
+            bucket = by_type.setdefault(t, {"count": 0, "names": [], "gross_salary": Decimal("0"),
                                              "tax": Decimal("0"), "deductions": Decimal("0"),
                                              "net_salary": Decimal("0")})
             bucket["count"] += 1
+            bucket["names"].append(row["name"])
             for key in ("gross_salary", "tax", "deductions", "net_salary"):
                 bucket[key] += Decimal(row[key])
         return by_type
@@ -318,6 +319,17 @@ def main():
     print(f"  Total Tax          : {totals['tax']:.2f}")
     print(f"  Total Deductions   : {totals['deductions']:.2f}")
     print(f"  Total Net Salary   : {totals['net_salary']:.2f}")
+
+    by_type = processor.summary_by_type()
+    if by_type:
+        print("\nBreakdown by employee type:")
+        for emp_type, stats in sorted(by_type.items()):
+            print(f"  {emp_type} ({stats['count']}):")
+            print(f"      Names        : {', '.join(stats['names'])}")
+            print(f"      Gross Salary : {stats['gross_salary']:.2f}")
+            print(f"      Tax          : {stats['tax']:.2f}")
+            print(f"      Deductions   : {stats['deductions']:.2f}")
+            print(f"      Net Salary   : {stats['net_salary']:.2f}")
     print(f"\nDetailed results written to: {args.output}")
 
 
