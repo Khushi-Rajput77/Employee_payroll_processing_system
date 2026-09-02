@@ -1,6 +1,6 @@
 employee_id,name,department,basic_salary,bonus,tax,employee_type
-E001,Aarav Sharma,Engineering,-50000,5000,10,full-time
-E002,Priya Nair,Engineering,90000,15000,20,manager
+E001,Aarav Sharma,Engineering,50000,5000,10,full-time
+E002,Priya Nair,Engineering,-90000,15000,20,manager
 E003,Rohit Verma,Design,60000,3000,15,full-time
 E004,Sneha Iyer,Marketing,45000,2000,10,contractor
 E005,Karan Mehta,Engineering,12000,0,5,intern
